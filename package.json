@@ -1,0 +1,33 @@
+{
+  "name": "scan-downloads",
+  "description": "Trigger download folder scan for Sonarr and Couch Potato",
+  "version": "0.1.0",
+  "main": "index.js",
+  "bin": "bin/scan-downloads.js",
+  "scripts": {
+    "build": "webpack --progress --colors",
+    "dev-cp": "babel-node src/index.js --app=couchpotato",
+    "dev-sn": "babel-node src/index.js --app=sonarr",
+    "pkg": "npm run build && pkg . --out-dir pkg/",
+    "postinstall": "build"
+  },
+  "author": "Joe Schmitt",
+  "license": "MIT",
+  "pkg": {
+    "assets": ".env*"
+  },
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "couchpotato-api": "^0.1.0",
+    "dotenv": "^4.0.0",
+    "minimist": "^1.2.0",
+    "sonarr-api": "^0.2.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-env": "^1.4.0",
+    "pkg": "^3.0.4",
+    "webpack": "^2.5.1"
+  }
+}
