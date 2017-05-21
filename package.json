@@ -9,7 +9,7 @@
     "dev-cp": "babel-node src/index.js --app=couchpotato",
     "dev-sn": "babel-node src/index.js --app=sonarr",
     "pkg": "npm run build && pkg . --out-dir pkg/",
-    "postinstall": "build"
+    "postinstall": "npm run build"
   },
   "author": "Joe Schmitt",
   "license": "MIT",
