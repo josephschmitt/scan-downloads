@@ -6,7 +6,7 @@ import config from '../config.js';
 let couchpotato;
 function cp() {
   if (!couchpotato) {
-    const conf = config();
+    const conf = config('couchpotato');
 
     couchpotato = new CouchPotatoAPI({
       hostname: conf.HOSTNAME,

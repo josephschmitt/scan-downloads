@@ -6,7 +6,7 @@ import config from '../config.js';
 let sonarr;
 function getSonarr() {
   if (!sonarr) {
-    const conf = config();
+    const conf = config('sonarr');
 
     sonarr = new SonarrAPI({
       hostname: conf.HOSTNAME,
