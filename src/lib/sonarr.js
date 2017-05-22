@@ -18,15 +18,13 @@ function getSonarr() {
   return sonarr;
 }
 
+/**
+ * Performs the API request to start the episode scan.
+ * @returns {Promise}
+ */
 export default async function() {
-  try {
-    await getSonarr().post('command', {
-      name: 'DownloadedEpisodesScan',
-      downloadClientId: 'nzoid'
-    });
-
-    console.log(chalk.green('Success!'), 'Scan queued.');
-  } catch (e) {
-    console.error(chalk.red('Error'), ':', e);
-  }
+  return getSonarr().post('command', {
+    name: 'DownloadedEpisodesScan',
+    downloadClientId: 'nzoid'
+  });
 }

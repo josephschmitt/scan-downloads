@@ -13,6 +13,9 @@ Simply call the script, passing the `--app` flag to tell it which scan to kickof
 ```sh
 ./scan-downloads.js --app=couchpotato
 ./scan-downloads.js --app=sonarr
+
+# Supports scanning multiple apps at a time
+./scan-downloads.js --app=couchpotato,sonarr
 ```
 
 ## Configuration

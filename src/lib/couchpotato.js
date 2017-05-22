@@ -18,11 +18,10 @@ function cp() {
   return couchpotato;
 }
 
+/**
+ * Performs the API request to start the renamer scan.
+ * @returns {Promise}
+ */
 export default async function() {
-  try {
-    await cp().get('renamer.scan', {});
-    console.log(chalk.green('Success!'), 'Scan queued.');
-  } catch (e) {
-    console.error(chalk.red('Error') + ':', e.message);
-  }
+  return cp().get('renamer.scan', {});
 }
