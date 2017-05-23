@@ -2,7 +2,9 @@ import chalk from 'chalk';
 import path from 'path';
 
 import args from './lib/cliArgs.js';
+
 import couchpotato from './lib/couchpotato.js';
+import radarr from './lib/radarr.js';
 import sonarr from './lib/sonarr.js';
 
 /**
@@ -14,6 +16,8 @@ async function scan(app) {
   try {
     if (app === 'couchpotato') {
       await couchpotato();
+    } else if (app === 'radarr') {
+      await radarr();
     } else if (app === 'sonarr') {
       await sonarr();
     } else {

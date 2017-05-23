@@ -1,10 +1,11 @@
 # Trigger download folder scan for Sonarr and Couch Potato
 
-Simple script that uses the Sonarr and Couch Potato APIs to trigger scanning of the downloads
-folder. This is useful if you use Sonarr or Couch Potato for file renaming, but have another process
-you need to run in between downloading and renaming (such as transmuxing through something like
-iFlicks or Handbrake). This will allow you to do your extra processing, then when complete call this
-script which will tell the app to kick off its renaming process.
+Simple script that uses the [Sonarr](http://sonarr.tv) and [Couch Potato](https://couchpota.to)
+(and [Radarr](http://radarr.video)) APIs to trigger scanning of the downloads folder. This is useful
+if you use Sonarr or Couch Potato for file renaming, but have another process you need to run in
+between downloading and renaming (such as transmuxing through something like iFlicks or Handbrake).
+This will allow you to do your extra processing, then when complete call this script which will tell
+the app to kick off its renaming process.
 
 ## Usage
 
@@ -13,16 +14,17 @@ Simply call the script, passing the `--app` flag to tell it which scan to kickof
 ```sh
 ./scan-downloads.js --app=couchpotato
 ./scan-downloads.js --app=sonarr
+./scan-downloads.js --app=radarr # Preliminary support
 
 # Supports scanning multiple apps at a time
-./scan-downloads.js --app=couchpotato,sonarr
+./scan-downloads.js --app=sonarr,radarr
 ```
 
 ## Configuration
 
-You should update the environment dotfiles to configure your server environments. There are two
-`.env` files: `.env.couchpotato` and `.env.sonarr`. Just replace the defaults with the information
-that points to your servers, and then run the script.
+You should update the environment dotfiles to configure your server environments. There are three
+`.env` files: `.env.couchpotato`, `.env.sonarr` and `.env.radarr`. Just replace the defaults with
+the information that points to your servers, and then run the script.
 
 ## Binary Packages
 
@@ -34,6 +36,5 @@ directory with binaries for Windows, Mac, and Linux, which you can then put on y
 server.
 
 ```sh
-./scan-downloads-macos --app=couchpotato
 ./scan-downloads-macos --app=sonarr
 ```

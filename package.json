@@ -1,12 +1,13 @@
 {
   "name": "scan-downloads",
   "description": "Trigger download folder scan for Sonarr and Couch Potato",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "main": "index.js",
   "bin": "bin/scan-downloads.js",
   "scripts": {
     "build": "webpack --progress --colors",
     "dev-cp": "babel-node src/index.js --app=couchpotato",
+    "dev-rd": "babel-node src/index.js --app=radarr",
     "dev-sn": "babel-node src/index.js --app=sonarr",
     "pkg": "npm run build && pkg . --out-dir pkg/",
     "postinstall": "npm run build"
