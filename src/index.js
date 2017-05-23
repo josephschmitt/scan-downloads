@@ -30,4 +30,4 @@ async function scan(app) {
 }
 
 // Run scanner for the app or app(s)
-(args.app || '').split(',').forEach((app) => scan(app.trim()));
+Promise.all((args.app || '').split(',').map((app) => scan(app.trim())));
