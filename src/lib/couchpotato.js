@@ -3,15 +3,18 @@ import chalk from 'chalk';
 
 import config from '../config.js';
 
-let couchpotato;
+let couchpotato, conf;
 function cp() {
   if (!couchpotato) {
-    const conf = config('couchpotato');
+    conf = config('couchpotato');
 
     couchpotato = new CouchPotatoAPI({
       hostname: conf.HOSTNAME,
-      apiKey: conf.API_KEY,
-      port: conf.PORT
+      port: conf.PORT || null,
+      ssl: conf.SSL === true,
+      apiKey: conf.API_KEY || null,
+      username: conf.username || null,
+      password: conf.password || null
     });
   }
 
@@ -23,5 +26,9 @@ function cp() {
  * @returns {Promise}
  */
 export default async function() {
-  return cp().get('renamer.scan', {});
+  return cp().get('renamer.scan', {
+    base_folder: conf.SCAN_PATH || null,
+    download_id: conf.DOWNLOAD_ID || null,
+    downloader: conf.DOWNLOADER || null
+  });
 }

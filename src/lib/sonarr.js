@@ -3,15 +3,18 @@ import chalk from 'chalk';
 
 import config from '../config.js';
 
-let sonarr;
+let sonarr, conf;
 function getSonarr() {
   if (!sonarr) {
-    const conf = config('sonarr');
+    conf = config('sonarr');
 
     sonarr = new SonarrAPI({
       hostname: conf.HOSTNAME,
-      apiKey: conf.API_KEY,
-      port: conf.PORT
+      port: conf.PORT || null,
+      ssl: conf.SSL === true,
+      apiKey: conf.API_KEY || null,
+      username: conf.username || null,
+      password: conf.password || null
     });
   }
 
@@ -25,6 +28,8 @@ function getSonarr() {
 export default async function() {
   return getSonarr().post('command', {
     name: 'DownloadedEpisodesScan',
-    downloadClientId: 'nzoid'
+    path: conf.SCAN_PATH || null,
+    downloadClientId: conf.DOWNLOAD_CLIENT_ID || null,
+    importMode: conf.IMPORT_MODE || null
   });
 }

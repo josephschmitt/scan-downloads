@@ -3,15 +3,18 @@ import chalk from 'chalk';
 
 import config from '../config.js';
 
-let radarr;
+let radarr, conf;
 function getRadarr() {
   if (!radarr) {
-    const conf = config('radarr');
+    conf = config('radarr');
 
     radarr = new RadarrAPI({
       hostname: conf.HOSTNAME,
-      apiKey: conf.API_KEY,
-      port: conf.PORT
+      port: conf.PORT || null,
+      ssl: conf.SSL === true,
+      apiKey: conf.API_KEY || null,
+      username: conf.username || null,
+      password: conf.password || null
     });
   }
 
@@ -25,6 +28,8 @@ function getRadarr() {
 export default async function() {
   return getRadarr().post('command', {
     name: 'DownloadedMoviesScan',
-    downloadClientId: 'nzoid'
+    path: conf.SCAN_PATH || null,
+    downloadClientId: conf.DOWNLOAD_CLIENT_ID || null,
+    importMode: conf.IMPORT_MODE || null
   });
 }
