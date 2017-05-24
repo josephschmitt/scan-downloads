@@ -1,5 +1,4 @@
 import config from 'config';
-import args from './lib/cliArgs'
 
 /**
  * Reads the configuration file for a particular app.

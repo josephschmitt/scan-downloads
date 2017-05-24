@@ -12,19 +12,35 @@ the app to kick off its renaming process.
 Simply call the script, passing the `--app` flag to tell it which scan to kickoff.
 
 ```sh
-./scan-downloads.js --app=couchpotato
-./scan-downloads.js --app=sonarr
-./scan-downloads.js --app=radarr # Preliminary support
+$ ./scan-downloads.js --app=couchpotato
+$ ./scan-downloads.js --app=sonarr
+$ ./scan-downloads.js --app=radarr # Preliminary support
 
 # Supports scanning multiple apps at a time
-./scan-downloads.js --app=sonarr,radarr
+$ ./scan-downloads.js --app=sonarr,radarr
 ```
 
 ## Configuration
 
+### `config/default.json`
+
 You should update the `config/default.json` file to configure your server environments. There are
 three json keys: one for `couchpotato`, one for `sonarr`, and one for `radarr`. Just replace the
 defaults with the information that points to your servers, and then run the script.
+
+### `NODE_CONFIG`
+
+If you'd prefer setting the config at runtime, you can pass a json string as a command-line
+parameter `--NODE_CONFIG='{"sonarr": {"hostname": "localhost", ...}}'`, or set as a shell environment
+variable:
+
+```
+$ export NODE_CONFIG='{"sonarr": {"hostname": "localhost", ...}}'
+$ ./scan-downloads.js --app=sonarr
+```
+
+More information about different configuration options can be found in the
+[nodeconfig](https://github.com/lorenwest/node-config/wiki/Environment-Variables) docs.
 
 ## Binary Packages
 
@@ -36,5 +52,5 @@ server. The config files are packaged inside the binaries, so the binary file is
 go on the server.
 
 ```sh
-./scan-downloads-macos --app=sonarr
+$ ./scan-downloads-macos --app=sonarr
 ```

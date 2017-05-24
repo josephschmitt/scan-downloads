@@ -11,6 +11,7 @@ import sonarr from './lib/sonarr.js';
  * Run the completed downloads scan for a specific app.
  *
  * @param {String} app -- Name of the app to run the scan for.
+ * @returns {String} -- Status message
  */
 export async function scan(app) {
   try {
@@ -23,13 +24,25 @@ export async function scan(app) {
     } else {
       console.error('Invalid app name:', chalk.cyan(app));
     }
+
     console.log(chalk.green('Success!'), chalk.cyan(app), 'scan queued.');
+    return `Success! ${app} scan queued.`;
   } catch (e) {
     console.error(chalk.red('Error') + ':', chalk.cyan(app), e.message);
+    return `Error: ${app} ${e.message}`;
   }
 }
 
-// Run scanner for the app or app(s)
-export function scanApps() {
-  return Promise.all((args.app || '').split(',').map((app) => scan(app.trim())));
+/**
+ * Run the completed downloads scan for a specific app or apps.
+ *
+ * @param {String} apps -- Comma-list of apps
+ * @returns Promise.all
+ */
+export function scanApps(apps) {
+  if (!apps && args) {
+    apps = args.app
+  }
+
+  return Promise.all(apps.split(',').map((app) => scan(app.trim())));
 }
