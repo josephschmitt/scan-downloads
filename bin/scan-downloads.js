@@ -8,4 +8,4 @@
  */
 
 // Load and run the app
-var bundle = require('./bundle.js');
+var bundle = require('../dist/index.js').scanApps();

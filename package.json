@@ -1,7 +1,7 @@
 {
   "name": "scan-downloads",
   "description": "Trigger download folder scan for Sonarr, Radarr, and Couch Potato",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "main": "dist/index.js",
   "bin": "bin/scan-downloads.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "dev-cp": "babel-node src/index.js --app=couchpotato",
     "dev-rd": "babel-node src/index.js --app=radarr",
     "dev-sn": "babel-node src/index.js --app=sonarr",
-    "pkg": "webpack && pkg . --out-dir pkg/",
+    "pkg": "npm run build && pkg . --out-dir pkg/",
     "postinstall": "npm run build"
   },
   "author": "Joe Schmitt",
@@ -27,8 +27,6 @@
     "sonarr-api": "^0.2.0"
   },
   "devDependencies": {
-    "babel-loader": "^7.0.0",
-    "pkg": "^3.0.4",
-    "webpack": "^2.5.1"
+    "pkg": "^3.0.4"
   }
 }

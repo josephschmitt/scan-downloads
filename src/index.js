@@ -12,7 +12,7 @@ import sonarr from './lib/sonarr.js';
  *
  * @param {String} app -- Name of the app to run the scan for.
  */
-async function scan(app) {
+export async function scan(app) {
   try {
     if (app === 'couchpotato') {
       await couchpotato();
@@ -30,4 +30,6 @@ async function scan(app) {
 }
 
 // Run scanner for the app or app(s)
-Promise.all((args.app || '').split(',').map((app) => scan(app.trim())));
+export function scanApps() {
+  return Promise.all((args.app || '').split(',').map((app) => scan(app.trim())));
+}
