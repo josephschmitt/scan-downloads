@@ -22,18 +22,18 @@ Simply call the script, passing the `--app` flag to tell it which scan to kickof
 
 ## Configuration
 
-You should update the environment dotfiles to configure your server environments. There are three
-`.env` files: `.env.couchpotato`, `.env.sonarr` and `.env.radarr`. Just replace the defaults with
-the information that points to your servers, and then run the script.
+You should update the `config/default.json` file to configure your server environments. There are
+three json keys: one for `couchpotato`, one for `sonarr`, and one for `radarr`. Just replace the
+defaults with the information that points to your servers, and then run the script.
 
 ## Binary Packages
 
 If you don't want to have to install or configure NodeJS on your server that runs the script, you
 have the option of packaging up the script into a binary. First make sure to correctly configure the
-`.env` files. Then, in your terminal, simply run `npm run pkg`. When it's done, you'll see a `pkg/`
-directory with binaries for Windows, Mac, and Linux, which you can then put on your server. The
-`.env` files are packaged inside the binaries, so the binary file is all that needs to go on the
-server.
+`config/default.json` file. Then, in your terminal, simply run `npm run pkg`. When it's done, you'll
+see a `pkg/` directory with binaries for Windows, Mac, and Linux, which you can then put on your
+server. The config files are packaged inside the binaries, so the binary file is all that needs to
+go on the server.
 
 ```sh
 ./scan-downloads-macos --app=sonarr

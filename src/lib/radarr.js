@@ -9,10 +9,10 @@ function getRadarr() {
     conf = config('radarr');
 
     radarr = new RadarrAPI({
-      hostname: conf.HOSTNAME,
-      port: conf.PORT || null,
-      ssl: conf.SSL === true,
-      apiKey: conf.API_KEY || null,
+      hostname: conf.hostname,
+      port: conf.port || null,
+      ssl: conf.ssl === true,
+      apiKey: conf.apiKey || null,
       username: conf.username || null,
       password: conf.password || null
     });

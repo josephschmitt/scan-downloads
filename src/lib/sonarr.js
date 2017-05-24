@@ -9,10 +9,10 @@ function getSonarr() {
     conf = config('sonarr');
 
     sonarr = new SonarrAPI({
-      hostname: conf.HOSTNAME,
-      port: conf.PORT || null,
-      ssl: conf.SSL === true,
-      apiKey: conf.API_KEY || null,
+      hostname: conf.hostname,
+      port: conf.port || null,
+      ssl: conf.ssl === true,
+      apiKey: conf.apiKey || null,
       username: conf.username || null,
       password: conf.password || null
     });
@@ -28,8 +28,8 @@ function getSonarr() {
 export default async function() {
   return getSonarr().post('command', {
     name: 'DownloadedEpisodesScan',
-    path: conf.SCAN_PATH || null,
-    downloadClientId: conf.DOWNLOAD_CLIENT_ID || null,
-    importMode: conf.IMPORT_MODE || null
+    path: conf.path || null,
+    downloadClientId: conf.downloadClientId || null,
+    importMode: conf.importMode || null
   });
 }

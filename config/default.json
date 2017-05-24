@@ -1,0 +1,38 @@
+{
+  "couchpotato": {
+    "hostname": "localhost",
+    "port": 5050,
+    "apiKey": "",
+    "urlBase": "",
+    "ssl": "",
+    "username": "",
+    "password": "",
+    "base_folder": "",
+    "download_id": "",
+    "downloader": ""
+  },
+  "sonarr": {
+    "hostname": "localhost",
+    "port": 8989,
+    "apiKey": "",
+    "urlBase": "",
+    "ssl": "",
+    "username": "",
+    "password": "",
+    "path": "",
+    "downloadClientId": "",
+    "importMode": ""
+  },
+  "radarr": {
+    "hostname": "localhost",
+    "port": 7878,
+    "apiKey": "",
+    "urlBase": "",
+    "ssl": "",
+    "username": "",
+    "password": "",
+    "path": "",
+    "downloadClientId": "",
+    "importMode": ""
+  }
+}

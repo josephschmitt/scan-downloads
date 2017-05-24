@@ -9,10 +9,10 @@ function cp() {
     conf = config('couchpotato');
 
     couchpotato = new CouchPotatoAPI({
-      hostname: conf.HOSTNAME,
-      port: conf.PORT || null,
-      ssl: conf.SSL === true,
-      apiKey: conf.API_KEY || null,
+      hostname: conf.hostname,
+      port: conf.port || null,
+      ssl: conf.ssl === true,
+      apiKey: conf.apiKey || null,
       username: conf.username || null,
       password: conf.password || null
     });
@@ -27,8 +27,8 @@ function cp() {
  */
 export default async function() {
   return cp().get('renamer.scan', {
-    base_folder: conf.SCAN_PATH || null,
-    download_id: conf.DOWNLOAD_ID || null,
-    downloader: conf.DOWNLOADER || null
+    base_folder: conf.base_folder || null,
+    download_id: conf.download_id || null,
+    downloader: conf.downloader || null
   });
 }
