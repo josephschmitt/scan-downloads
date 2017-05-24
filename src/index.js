@@ -14,6 +14,8 @@ import sonarr from './lib/sonarr.js';
  * @returns {String} -- Status message
  */
 export async function scan(app) {
+  let msg;
+
   try {
     if (app === 'couchpotato') {
       await couchpotato();
@@ -25,12 +27,14 @@ export async function scan(app) {
       console.error('Invalid app name:', chalk.cyan(app));
     }
 
-    console.log(chalk.green('Success!'), chalk.cyan(app), 'scan queued.');
-    return `Success! ${app} scan queued.`;
+    msg = `${chalk.green('Success!')} ${chalk.cyan(app)} scan queued.`;
+    console.log(msg);
   } catch (e) {
-    console.error(chalk.red('Error') + ':', chalk.cyan(app), e.message);
-    return `Error: ${app} ${e.message}`;
+    msg = `${chalk.red('Error')}':' ${chalk.cyan(app)} ${e.message}`;
+    console.error(msg);
   }
+
+  return chalk.stripColor(msg);
 }
 
 /**
