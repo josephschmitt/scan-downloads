@@ -8,7 +8,7 @@ import config from 'config';
  * @returns {Object} -- Object with the configuration settings for the app.
  */
 export default function(app) {
-  const conf = config.get(app);
+  const conf = config.get(`scan-downloads.${app}`);
 
   if (!conf) {
     throw new Error('Configuration for ' + chalk.cyan(app) + ' not found.');
