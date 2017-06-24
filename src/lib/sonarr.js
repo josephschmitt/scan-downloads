@@ -14,7 +14,8 @@ function getSonarr() {
       ssl: conf.ssl === true,
       apiKey: conf.apiKey || null,
       username: conf.username || null,
-      password: conf.password || null
+      password: conf.password || null,
+      urlBase: conf.urlBase || null
     });
   }
 

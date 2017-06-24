@@ -1,7 +1,7 @@
 {
   "name": "scan-downloads",
   "description": "Trigger download folder scan for Sonarr, Radarr, and Couch Potato",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "main": "dist/index.js",
   "bin": "bin/scan-downloads.js",
   "scripts": {
